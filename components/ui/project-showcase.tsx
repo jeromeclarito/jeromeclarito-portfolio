@@ -13,14 +13,17 @@ import {
   ShieldCheck,
   Zap,
   Smartphone,
-  Code2
+  Code2,
+  Component,
+  Database,
+  Palette,
+  Search
 } from 'lucide-react';
 
-export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4';
+export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 
 export interface ProjectMetric {
   label: string;
-  value: number;
   icon: LucideIcon;
 }
 
@@ -44,33 +47,56 @@ export interface ProjectData {
   features: ProjectMetric[];
 }
 
-const PROJECT_DATA: Record<ProjectId, ProjectData> = {
+const PROJECT_DATA: Record<string, ProjectData> = {
   p1: {
     id: 'p1',
-    label: 'Financial Comparison',
-    title: 'Canstar Australia',
-    description: 'Lead Frontend Developer for the Credit Card comparison engine. Built using WordPress as a Headless CMS with an Angular frontend to handle high-volume financial traffic.',
-    image: 'https://cef.org.au/wp-content/uploads/2020/08/Canstar-logo.png',
-    link: 'https://www.canstar.com.au/credit-cards/',
+    label: 'Cultural Heritage',
+    title: 'MGM (Museums and Galleries Month)',
+    description: 'Built the frontend for the nationwide celebration of Filipino cultural heritage. Focused on creating a snappy, accessible interface that serves as a living space for learning and dialogue.',
+    image: '/projects/mgm-logo.png',
+    link: 'https://mgm.ncca.gov.ph/',
     colors: {
-      gradient: 'from-blue-600 to-indigo-900',
-      glow: 'bg-blue-500',
-      ring: 'border-blue-500/50',
-      bar: 'bg-blue-500',
+      gradient: 'from-red-600 to-red-900',
+      glow: 'bg-red-500',
+      ring: 'border-red-500/50',
+      bar: 'bg-red-500',
     },
-    stats: { role: 'Lead Frontend', completion: 100 },
+    stats: { role: 'Frontend Developer', completion: 100 },
     features: [
-      { label: 'SEO Performance', value: 98, icon: Zap },
-      { label: 'Architecture', value: 95, icon: Layers },
+      { label: 'Next.js', icon: Code2 },
+      { label: 'Tailwind CSS', icon: Palette },
+      { label: 'Shadcn UI', icon: Component },
+      { label: 'WCAG Accessible', icon: Layout },
     ],
   },
   p2: {
     id: 'p2',
-    label: 'FinTech Portal',
+    label: 'Education & Skills',
+    title: 'RNIT (TESDA)',
+    description: 'Designed and built the digital presence for Romblon National Institute of Technology. A long-term project focused on providing a clean, easy-to-navigate platform for technical education.',
+    image: 'https://rnit-tesda.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRNIT-logo.3b4b8108.webp&w=128&q=75',
+    link: 'https://rnit-tesda.org/',
+    colors: {
+      gradient: 'from-blue-700 to-blue-950',
+      glow: 'bg-blue-600',
+      ring: 'border-blue-600/50',
+      bar: 'bg-blue-600',
+    },
+    stats: { role: 'Lead Developer', completion: 100 },
+    features: [
+      { label: 'Next.js', icon: Cpu },
+      { label: 'Responsive Design', icon: Smartphone },
+      { label: 'Shadcn UI', icon: Component },
+      { label: 'SEO Optimized', icon: Search },
+    ],
+  },
+  p3: {
+    id: 'p3',
+    label: 'Renewable Energy MVP',
     title: 'Origin Shift',
-    description: 'Developed a high-security customer portal for currency exchange in the NZ market using Next.js and Tailwind CSS with heavy API integration.',
+    description: 'Developed an MVP portal to survey and transition customers toward renewable energy. Balanced Material UI and Tailwind for rapid, functional prototyping in the Australia market.',
     image: '/projects/origin-energy.png',
-    link: 'https://www.travelmoney.co.nz/',
+    link: 'https://origin-mvp.netlify.app/',
     colors: {
       gradient: 'from-emerald-600 to-teal-900',
       glow: 'bg-emerald-500',
@@ -79,34 +105,17 @@ const PROJECT_DATA: Record<ProjectId, ProjectData> = {
     },
     stats: { role: 'Frontend Developer', completion: 100 },
     features: [
-      { label: 'Security', value: 100, icon: ShieldCheck },
-      { label: 'Mobile-First', value: 96, icon: Smartphone },
-    ],
-  },
-  p3: {
-    id: 'p3',
-    label: 'Enterprise Modernization',
-    title: 'IBM Web Consultant',
-    description: 'Consulted on legacy CMS migration to modern React components. Optimized CI/CD pipelines to reduce deployment cycles from 1 hour to under 5 minutes.',
-    image: '/projects/ibm.svg',
-    link: '#',
-    colors: {
-      gradient: 'from-purple-600 to-fuchsia-900',
-      glow: 'bg-purple-500',
-      ring: 'border-purple-500/50',
-      bar: 'bg-purple-500',
-    },
-    stats: { role: 'Web Consultant', completion: 100 },
-    features: [
-      { label: 'CI/CD Speed', value: 99, icon: Cpu },
-      { label: 'React Migration', value: 92, icon: Code2 },
+      { label: 'Next.js', icon: Zap },
+      { label: 'Material UI', icon: Layers },
+      { label: 'API Integration', icon: Database },
+      { label: 'Secure Auth', icon: ShieldCheck },
     ],
   },
   p4: {
     id: 'p4',
-    label: 'Finance & Compliance',
+    label: 'Finance & Accessibility',
     title: 'Australian Super',
-    description: 'Built frontend components for Australia’s largest super fund, focusing on strict WCAG 2.1 Accessibility compliance and financial brand standards.',
+    description: 'Built reusable frontend components for Australia’s largest super fund. My work focused on pixel-perfect responsiveness and strict WCAG 2.1 compliance for public-facing assets.',
     image: '/projects/ausuper.svg',
     link: 'https://www.australiansuper.com/',
     colors: {
@@ -117,8 +126,31 @@ const PROJECT_DATA: Record<ProjectId, ProjectData> = {
     },
     stats: { role: 'Web Developer', completion: 100 },
     features: [
-      { label: 'WCAG 2.1', value: 100, icon: Layout },
-      { label: 'Compliance', value: 98, icon: Globe },
+      { label: 'WCAG 2.1', icon: Globe },
+      { label: 'Reusable Library', icon: Component },
+      { label: 'Brand Compliance', icon: ShieldCheck },
+      { label: 'Mobile-First', icon: Smartphone },
+    ],
+  },
+  p5: {
+    id: 'p5',
+    label: 'Headless Comparison',
+    title: 'Canstar Australia',
+    description: 'Enhanced the high-traffic Credit Card comparison engine using a Headless WordPress architecture. Implemented GraphQL and Angular to manage complex financial data efficiently.',
+    image: 'https://cef.org.au/wp-content/uploads/2020/08/Canstar-logo.png',
+    link: 'https://www.canstar.com.au/credit-cards/',
+    colors: {
+      gradient: 'from-blue-600 to-indigo-900',
+      glow: 'bg-blue-500',
+      ring: 'border-blue-500/50',
+      bar: 'bg-blue-500',
+    },
+    stats: { role: 'Frontend Developer', completion: 100 },
+    features: [
+      { label: 'Headless WP', icon: Layout },
+      { label: 'GraphQL', icon: Database },
+      { label: 'Angular', icon: Code2 },
+      { label: 'Performance', icon: Zap },
     ],
   },
 };
@@ -178,7 +210,7 @@ const ProjectVisual = ({ data }: { data: ProjectData }) => (
     </div>
 
     <motion.div layout className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
-      <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-950 px-4 py-2 rounded-full border border-zinc-200 dark:border-white/10 shadow-lg">
+      <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-500 dark:text-zinc-400 bg-white dark:bg-zinc-950 px-4 py-2 rounded-full border border-zinc-200 dark:border-white/10 shadow-lg">
         <span className={`h-2 w-2 rounded-full ${data.colors.glow} animate-pulse`} />
         {data.stats.role}
       </div>
@@ -213,7 +245,7 @@ export default function ProjectShowcase() {
                   <motion.h1 variants={ANIMATIONS.item} className="text-4xl md:text-5xl font-black tracking-tighter mt-1 mb-4 bg-clip-text text-transparent bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-500">
                     {current.title}
                   </motion.h1>
-                  <motion.p variants={ANIMATIONS.item} className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  <motion.p variants={ANIMATIONS.item} className="text-zinc-500 dark:text-zinc-400 leading-relaxed">
                     {current.description}
                   </motion.p>
                 </div>
@@ -223,14 +255,6 @@ export default function ProjectShowcase() {
                     <div key={f.label} className="space-y-2">
                       <div className="flex justify-between text-xs font-bold uppercase tracking-wider">
                         <span className="flex items-center gap-2"><f.icon size={14} /> {f.label}</span>
-                        <span className="text-zinc-500">{f.value}%</span>
-                      </div>
-                      <div className="h-1.5 w-full bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${f.value}%` }}
-                          className={`h-full ${current.colors.bar}`}
-                        />
                       </div>
                     </div>
                   ))}

@@ -205,7 +205,7 @@ const ProjectVisual = ({ data }: { data: ProjectData }) => (
     </div>
 
     <motion.div layout className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
-      <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-950 px-4 py-2 rounded-full border border-zinc-200 dark:border-white/10 shadow-lg">
+      <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-500 dark:text-zinc-400 bg-white dark:bg-zinc-950 px-4 py-2 rounded-full border border-zinc-200 dark:border-white/10 shadow-lg">
         <span className={`h-2 w-2 rounded-full ${data.colors.glow} animate-pulse`} />
         {data.stats.role}
       </div>
@@ -248,7 +248,7 @@ export default function ProjectShowcase() {
                   <motion.h1 variants={ANIMATIONS.item} className="text-4xl md:text-6xl font-black tracking-tighter mt-1 mb-4 bg-clip-text text-transparent bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-500">
                     {current.title}
                   </motion.h1>
-                  <motion.p variants={ANIMATIONS.item} className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                  <motion.p variants={ANIMATIONS.item} className="text-zinc-500 dark:text-zinc-400 leading-relaxed">
                     {current.description}
                   </motion.p>
                 </div>

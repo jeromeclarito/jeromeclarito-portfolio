@@ -47,11 +47,11 @@ export default function AboutPage() {
               Crafting modern web experiences with <span className="text-brand">Next.js</span> and <span className="text-brand">Scalable CMS</span> architectures.
             </h2>
 
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-lg text-zinc-500 dark:text-zinc-400 leading-relaxed">
               With over <strong>6 years of experience</strong> delivering high-performance digital solutions for prominent Australian brands, I specialize in bridging the gap between robust backend structures and elite user interfaces.
             </p>
 
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-lg text-zinc-500 dark:text-zinc-400 leading-relaxed">
               While my foundation is built on deep <strong>WordPress</strong> expertise, specifically Headless and Component-based architectures, my recent focus is centered on the <strong>Next.js, Tailwind CSS, and Shadcn UI</strong> stack. This allows me to build fast, type-safe, and highly accessible applications that meet modern financial and enterprise standards.
             </p>
           </motion.div> */}
@@ -60,11 +60,11 @@ export default function AboutPage() {
               Building <span className="text-brand">responsive</span> components that work for everyone.
             </h2>
 
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-sm md:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed">
               I’ve spent the last <strong>6 years</strong> working with Australian brands, turning designs into clean, functional code. My main focus is on building components that are fully responsive and meet <strong>WCAG accessibility standards</strong>, making sure the web stays usable for everyone.
             </p>
 
-            <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            <p className="text-sm md:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed">
               I have a solid background in <strong>WordPress</strong> and headless setups, but these days I do most of my work using <strong>Next.js, Tailwind CSS, and Shadcn UI</strong>. I prefer these tools because they help me build fast, reliable interfaces that are easy to maintain and scale.
             </p>
           </motion.div>
@@ -84,11 +84,11 @@ export default function AboutPage() {
                 </li>
                 <li className="flex justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
                   <span className="text-zinc-500">Education</span>
-                  <span className="font-mono text-zinc-900 dark:text-white">Master in Information Technology</span>
+                  <span className="font-mono text-zinc-900 dark:text-white text-right">Master in Information Technology</span>
                 </li>
                 <li className="flex justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
                   <span className="text-zinc-500">Location</span>
-                  <span className="font-mono text-zinc-900 dark:text-white">Philippines</span>
+                  <span className="font-mono text-zinc-900 dark:text-white">Remote / Philippines</span>
                 </li>
               </ul>
             </div>
