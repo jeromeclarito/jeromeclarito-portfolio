@@ -50,8 +50,8 @@ export interface ProjectData {
 const PROJECT_DATA: Record<string, ProjectData> = {
   p1: {
     id: 'p1',
-    label: 'Cultural Heritage',
-    title: 'MGM (Museums and Galleries Month)',
+    label: 'Museums and Galleries Month',
+    title: 'MGM',
     description: 'Built the frontend for the nationwide celebration of Filipino cultural heritage. Focused on creating a snappy, accessible interface that serves as a living space for learning and dialogue.',
     image: '/projects/mgm-logo.png',
     link: 'https://mgm.ncca.gov.ph/',
