@@ -20,10 +20,10 @@ export const HeroSection = () => {
           <div>
             <BlurText
               text="Clarito"
-              delay={100}
+              delay={120}
               animateBy="letters"
-              direction="top"
-              className="font-bold text-[100px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap"
+              direction="bottom"
+              className="font-bold text-[90px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap"
               style={{ color: "#e49514", fontFamily: "'Fira Code', monospace" }}
             />
           </div>
@@ -45,7 +45,7 @@ export const HeroSection = () => {
       <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-32 xl:bottom-36 left-1/2 -translate-x-1/2 w-full px-6">
         <div className="flex justify-center">
           <BlurText
-            text="Designing human experiences in code."
+            text="Coding for clarity, accessibility, and performance."
             delay={150}
             animateBy="words"
             direction="top"

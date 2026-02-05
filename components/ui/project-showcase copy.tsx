@@ -3,24 +3,26 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import {
+  Code2,
   ExternalLink,
+  ChevronRight,
   Globe,
   Cpu,
   Layers,
   Layout,
   LucideIcon,
   Github,
-  ShieldCheck,
-  Zap,
-  Smartphone,
-  Code2
 } from 'lucide-react';
 
-export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4';
+// =========================================
+// 1. CONFIGURATION & DATA TYPES
+// =========================================
+
+export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 
 export interface ProjectMetric {
   label: string;
-  value: number;
+  value: number; // 0-100
   icon: LucideIcon;
 }
 
@@ -47,11 +49,11 @@ export interface ProjectData {
 const PROJECT_DATA: Record<ProjectId, ProjectData> = {
   p1: {
     id: 'p1',
-    label: 'Financial Comparison',
-    title: 'Canstar Australia',
-    description: 'Lead Frontend Developer for the Credit Card comparison engine. Built using WordPress as a Headless CMS with an Angular frontend to handle high-volume financial traffic.',
-    image: 'https://cef.org.au/wp-content/uploads/2020/08/Canstar-logo.png',
-    link: 'https://www.canstar.com.au/credit-cards/',
+    label: 'Project 1',
+    title: 'Nexus Dashboard',
+    description: 'A high-performance analytics platform built with Next.js and Tailwind, featuring real-time data streaming and custom charting engines.',
+    image: 'https://illustrations.popsy.co/white/abstract-art-4.svg',
+    link: 'https://example.com/nexus',
     colors: {
       gradient: 'from-blue-600 to-indigo-900',
       glow: 'bg-blue-500',
@@ -60,70 +62,91 @@ const PROJECT_DATA: Record<ProjectId, ProjectData> = {
     },
     stats: { role: 'Lead Frontend', completion: 100 },
     features: [
-      { label: 'SEO Performance', value: 98, icon: Zap },
-      { label: 'Architecture', value: 95, icon: Layers },
+      { label: 'Performance', value: 98, icon: Cpu },
+      { label: 'UX Design', value: 92, icon: Layout },
     ],
   },
   p2: {
     id: 'p2',
-    label: 'FinTech Portal',
-    title: 'Origin Shift',
-    description: 'Developed a high-security customer portal for currency exchange in the NZ market using Next.js and Tailwind CSS with heavy API integration.',
-    image: '/projects/origin-energy.png',
-    link: 'https://www.travelmoney.co.nz/',
+    label: 'Project 2',
+    title: 'EcoSphere App',
+    description: 'A mobile-first environmental tracking application utilizing geo-location and machine learning to identify local flora.',
+    image: 'https://illustrations.popsy.co/white/abstract-art-1.svg',
+    link: 'https://example.com/eco',
     colors: {
       gradient: 'from-emerald-600 to-teal-900',
       glow: 'bg-emerald-500',
       ring: 'border-emerald-500/50',
       bar: 'bg-emerald-500',
     },
-    stats: { role: 'Frontend Developer', completion: 100 },
+    stats: { role: 'Full Stack', completion: 85 },
     features: [
-      { label: 'Security', value: 100, icon: ShieldCheck },
-      { label: 'Mobile-First', value: 96, icon: Smartphone },
+      { label: 'API Latency', value: 14, icon: Globe },
+      { label: 'Architecture', value: 95, icon: Layers },
     ],
   },
   p3: {
     id: 'p3',
-    label: 'Enterprise Modernization',
-    title: 'IBM Web Consultant',
-    description: 'Consulted on legacy CMS migration to modern React components. Optimized CI/CD pipelines to reduce deployment cycles from 1 hour to under 5 minutes.',
-    image: '/projects/ibm.svg',
-    link: '#',
+    label: 'Project 3',
+    title: 'Nova E-Commerce',
+    description: 'Modern headless commerce solution with Stripe integration and a custom-built inventory management system.',
+    image: 'https://illustrations.popsy.co/white/abstract-art-3.svg',
+    link: 'https://example.com/nova',
     colors: {
       gradient: 'from-purple-600 to-fuchsia-900',
       glow: 'bg-purple-500',
       ring: 'border-purple-500/50',
       bar: 'bg-purple-500',
     },
-    stats: { role: 'Web Consultant', completion: 100 },
+    stats: { role: 'Backend Dev', completion: 90 },
     features: [
-      { label: 'CI/CD Speed', value: 99, icon: Cpu },
-      { label: 'React Migration', value: 92, icon: Code2 },
+      { label: 'Security', value: 99, icon: Code2 },
+      { label: 'SEO Score', value: 88, icon: Globe },
     ],
   },
   p4: {
     id: 'p4',
-    label: 'Finance & Compliance',
-    title: 'Australian Super',
-    description: 'Built frontend components for Australia’s largest super fund, focusing on strict WCAG 2.1 Accessibility compliance and financial brand standards.',
-    image: '/projects/ausuper.svg',
-    link: 'https://www.australiansuper.com/',
+    label: 'Project 4',
+    title: 'Vanguard CRM',
+    description: 'Enterprise-grade customer relationship manager focused on accessibility and high-speed data entry for sales teams.',
+    image: 'https://illustrations.popsy.co/white/abstract-art-2.svg',
+    link: 'https://example.com/vanguard',
     colors: {
       gradient: 'from-orange-600 to-red-900',
       glow: 'bg-orange-500',
       ring: 'border-orange-500/50',
       bar: 'bg-orange-500',
     },
-    stats: { role: 'Web Developer', completion: 100 },
+    stats: { role: 'UI Engineer', completion: 75 },
     features: [
-      { label: 'WCAG 2.1', value: 100, icon: Layout },
-      { label: 'Compliance', value: 98, icon: Globe },
+      { label: 'Accessibility', value: 100, icon: Layout },
+      { label: 'Database', value: 82, icon: Layers },
+    ],
+  },
+  p5: {
+    id: 'p5',
+    label: 'Project 5',
+    title: 'Zenith Portal',
+    description: 'A collaborative workspace for remote teams, integrating video conferencing and real-time document editing.',
+    image: 'https://illustrations.popsy.co/white/digital-nomad.svg',
+    link: 'https://example.com/zenith',
+    colors: {
+      gradient: 'from-pink-600 to-rose-900',
+      glow: 'bg-pink-500',
+      ring: 'border-pink-500/50',
+      bar: 'bg-pink-500',
+    },
+    stats: { role: 'Product Lead', completion: 60 },
+    features: [
+      { label: 'Sync Rate', value: 94, icon: Cpu },
+      { label: 'Deployment', value: 100, icon: Globe },
     ],
   },
 };
 
-// ... (Animations and Sub-components remain the same as your provided code) ...
+// =========================================
+// 2. ANIMATIONS
+// =========================================
 
 const ANIMATIONS = {
   container: {
@@ -141,6 +164,10 @@ const ANIMATIONS = {
     exit: { opacity: 0, scale: 1.1, filter: 'blur(20px)' },
   } satisfies Variants,
 };
+
+// =========================================
+// 3. SUB-COMPONENTS
+// =========================================
 
 const BackgroundGradient = ({ color }: { color: string }) => (
   <div className="fixed inset-0 pointer-events-none">
@@ -186,16 +213,24 @@ const ProjectVisual = ({ data }: { data: ProjectData }) => (
   </motion.div>
 );
 
+// =========================================
+// 4. MAIN COMPONENT
+// =========================================
+
 export default function ProjectShowcase() {
   const [activeId, setActiveId] = useState<ProjectId>('p1');
   const current = PROJECT_DATA[activeId];
 
   return (
-    <div className="relative min-h-screen w-full text-zinc-900 dark:text-zinc-100 transition-colors duration-500 overflow-hidden flex flex-col items-center justify-center font-sans">
+    <div className="relative min-h-screen w-full  text-zinc-900 dark:text-zinc-100 transition-colors duration-500 overflow-hidden flex flex-col items-center justify-center font-sans">
+
       <BackgroundGradient color={current.colors.glow.replace('bg-', 'rgb(')} />
+
       <main className="relative z-10 w-full">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-16 lg:gap-32">
+
           <ProjectVisual data={current} />
+
           <motion.div layout className="w-full max-w-md">
             <AnimatePresence mode="wait">
               <motion.div
@@ -210,7 +245,7 @@ export default function ProjectShowcase() {
                   <motion.span variants={ANIMATIONS.item} className="text-xs font-black uppercase tracking-widest text-zinc-500">
                     {current.label}
                   </motion.span>
-                  <motion.h1 variants={ANIMATIONS.item} className="text-4xl md:text-5xl font-black tracking-tighter mt-1 mb-4 bg-clip-text text-transparent bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-500">
+                  <motion.h1 variants={ANIMATIONS.item} className="text-4xl md:text-6xl font-black tracking-tighter mt-1 mb-4 bg-clip-text text-transparent bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-500 dark:from-white dark:to-zinc-500">
                     {current.title}
                   </motion.h1>
                   <motion.p variants={ANIMATIONS.item} className="text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -237,8 +272,11 @@ export default function ProjectShowcase() {
 
                   <div className="pt-4 flex gap-4">
                     <a href={current.link} target="_blank" className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black text-sm font-bold hover:scale-[1.02] transition-transform">
-                      View Site <ExternalLink size={16} />
+                      Live Preview <ExternalLink size={16} />
                     </a>
+                    <button className="p-3 rounded-xl border border-zinc-200 dark:border-white/10 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors">
+                      <Github size={20} />
+                    </button>
                   </div>
                 </motion.div>
               </motion.div>
@@ -247,18 +285,24 @@ export default function ProjectShowcase() {
         </div>
       </main>
 
+      {/* Navigation Switcher */}
       <div className="fixed bottom-8 inset-x-0 flex justify-center z-50">
         <nav className="flex items-center gap-1 p-1.5 rounded-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl border border-zinc-200 dark:border-white/10 shadow-2xl">
           {(Object.keys(PROJECT_DATA) as ProjectId[]).map((id) => (
             <button
               key={id}
               onClick={() => setActiveId(id)}
-              className={`relative px-4 py-2 rounded-full text-[10px] font-bold transition-colors ${activeId === id ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300'}`}
+              className={`relative px-4 py-2 rounded-full text-xs font-bold transition-colors ${activeId === id ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-300'
+                }`}
             >
               {activeId === id && (
-                <motion.div layoutId="active-pill" className="absolute inset-0 bg-zinc-100 dark:bg-white/10 rounded-full" transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }} />
+                <motion.div
+                  layoutId="active-pill"
+                  className="absolute inset-0 bg-zinc-100 dark:bg-white/10 rounded-full"
+                  transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                />
               )}
-              <p className="relative z-10 md:text-sm">{PROJECT_DATA[id].title}</p>
+              <span className="relative z-10">{PROJECT_DATA[id].label}</span>
             </button>
           ))}
         </nav>

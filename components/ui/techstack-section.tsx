@@ -44,7 +44,7 @@ interface TechStackSectionProps {
 
 export function TechStackSection({ className }: TechStackSectionProps) {
   return (
-    <section className={`py-12 md:py-20 ${className ?? ""}`}>
+    <section>
       <div className="mx-auto max-w-3xl px-6">
         <AnimatedGroup
           variants={{

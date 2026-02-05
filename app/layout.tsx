@@ -20,7 +20,7 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Antic&display=swap"
         />
       </head>
-      <body className="font-sans antialiased max-w-screen-2xl mx-auto">
+      <body className="font-sans antialiased max-w-screen-2xl mx-auto dark:bg-black bg-zinc-50 transition-colors">
         <Header />
         {children}
       </body>
