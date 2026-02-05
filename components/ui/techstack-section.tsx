@@ -1,25 +1,24 @@
 import React from "react"
 import { AnimatedGroup } from "@/components/ui/animated-group"
+import { Variants } from "framer-motion"
 
-const transitionVariants = {
-  item: {
-    hidden: {
-      opacity: 0,
-      filter: "blur(12px)",
-      y: 12,
-    },
-    visible: {
-      opacity: 1,
-      filter: "blur(0px)",
-      y: 0,
-      transition: {
-        type: "spring",
-        bounce: 0.3,
-        duration: 1.5,
-      },
+const itemVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    filter: "blur(12px)",
+    y: 12,
+  },
+  visible: {
+    opacity: 1,
+    filter: "blur(0px)",
+    y: 0,
+    transition: {
+      type: "spring",
+      bounce: 0.3,
+      duration: 1.5,
     },
   },
-}
+};
 
 export interface TechIcon {
   src: string
@@ -57,7 +56,7 @@ export function TechStackSection({ className }: TechStackSectionProps) {
                 },
               },
             },
-            ...transitionVariants,
+            item: itemVariants,
           }}
           className="grid grid-cols-2 items-center justify-items-center gap-x-12 gap-y-12 sm:grid-cols-4"
         >
