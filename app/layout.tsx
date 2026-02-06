@@ -16,11 +16,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Fira+Code:wght@500;600;700&display=swap"
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Antic&display=swap"
         />
       </head>
-      <body className="font-sans antialiased max-w-screen-2xl mx-auto dark:bg-black bg-zinc-50 transition-colors">
+      <body className="antialiased max-w-screen-2xl mx-auto dark:bg-black bg-zinc-50 transition-colors">
         <Header />
         {children}
       </body>

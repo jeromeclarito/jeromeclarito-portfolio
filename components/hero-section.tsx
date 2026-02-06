@@ -13,8 +13,8 @@ export const HeroSection = () => {
               delay={100}
               animateBy="letters"
               direction="top"
-              className="font-bold text-[100px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap"
-              style={{ color: "#e49514", fontFamily: "'Fira Code', monospace" }}
+              className="font-bold text-[80px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap text-brand"
+            // style={{ color: "#d1a505", fontFamily: "'Fira Code', monospace" }}
             />
           </div>
           <div>
@@ -23,8 +23,8 @@ export const HeroSection = () => {
               delay={120}
               animateBy="letters"
               direction="bottom"
-              className="font-bold text-[90px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap"
-              style={{ color: "#e49514", fontFamily: "'Fira Code', monospace" }}
+              className="font-bold text-[80px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap text-brand"
+
             />
           </div>
 
@@ -49,8 +49,8 @@ export const HeroSection = () => {
             delay={150}
             animateBy="words"
             direction="top"
-            className="text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-center transition-colors duration-300 text-neutral-500 hover:text-black dark:hover:text-white"
-            style={{ fontFamily: "'Antic', sans-serif" }}
+            className="text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] text-center transition-colors duration-300 text-neutral-500 hover:text-black dark:hover:text-white font-fira-code"
+          // style={{ fontFamily: "'Antic', sans-serif" }}
           />
         </div>
       </div>

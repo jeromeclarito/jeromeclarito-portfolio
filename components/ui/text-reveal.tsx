@@ -20,7 +20,7 @@ export default function TextReveal({ word = "Cinematic Reveal", className = "" }
           {word.split("").map((char, i) => (
             <span
               key={`${key}-${i}`}
-              className="char"
+              className="char font-title"
               style={{
                 "--index": i,
               } as React.CSSProperties}

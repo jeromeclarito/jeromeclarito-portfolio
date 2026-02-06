@@ -80,15 +80,15 @@ export default function AboutPage() {
               <ul className="space-y-4">
                 <li className="flex justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
                   <span className="text-zinc-500">Experience</span>
-                  <span className="font-mono text-zinc-900 dark:text-white">6+ Years</span>
+                  <span className=" text-zinc-900 dark:text-white">6+ Years</span>
                 </li>
                 <li className="flex justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
                   <span className="text-zinc-500">Education</span>
-                  <span className="font-mono text-zinc-900 dark:text-white text-right">Master in Information Technology</span>
+                  <span className=" text-zinc-900 dark:text-white text-right">Master in Information Technology</span>
                 </li>
                 <li className="flex justify-between border-b border-zinc-200 dark:border-zinc-800 pb-2">
                   <span className="text-zinc-500">Location</span>
-                  <span className="font-mono text-zinc-900 dark:text-white">Remote / Philippines</span>
+                  <span className=" text-zinc-900 dark:text-white">Remote / Philippines</span>
                 </li>
               </ul>
             </div>
