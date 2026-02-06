@@ -19,6 +19,7 @@ import {
   Palette,
   Search
 } from 'lucide-react';
+import Image from 'next/image';
 
 export type ProjectId = 'p1' | 'p2' | 'p3' | 'p4' | 'p5';
 
@@ -74,7 +75,7 @@ const PROJECT_DATA: Record<string, ProjectData> = {
     label: 'Education & Skills',
     title: 'RNIT (TESDA)',
     description: 'Designed and built the digital presence for Romblon National Institute of Technology. A long-term project focused on providing a clean, easy-to-navigate platform for technical education.',
-    image: 'https://rnit-tesda.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FRNIT-logo.3b4b8108.webp&w=128&q=75',
+    image: '/projects/rnit-logo.webp',
     link: 'https://rnit-tesda.org/',
     colors: {
       gradient: 'from-blue-700 to-blue-950',
@@ -137,7 +138,7 @@ const PROJECT_DATA: Record<string, ProjectData> = {
     label: 'Headless Comparison',
     title: 'Canstar Australia',
     description: 'Enhanced the high-traffic Credit Card comparison engine using a Headless WordPress architecture. Implemented GraphQL and Angular to manage complex financial data efficiently.',
-    image: 'https://cef.org.au/wp-content/uploads/2020/08/Canstar-logo.png',
+    image: '/projects/canstar-logo.png',
     link: 'https://www.canstar.com.au/credit-cards/',
     colors: {
       gradient: 'from-blue-600 to-indigo-900',
@@ -196,16 +197,23 @@ const ProjectVisual = ({ data }: { data: ProjectData }) => (
 
     <div className="relative h-72 w-72 md:h-[400px] md:w-[400px] rounded-3xl border border-zinc-200/50 dark:border-white/5 shadow-2xl flex items-center justify-center overflow-hidden bg-white/50 dark:bg-zinc-900/20 backdrop-blur-xl">
       <AnimatePresence mode="wait">
-        <motion.img
+        <motion.div
           key={data.id}
-          src={data.image}
-          alt={data.title}
           variants={ANIMATIONS.image}
           initial="initial"
           animate="animate"
           exit="exit"
-          className="w-2/3 h-2/3 object-contain drop-shadow-2xl"
-        />
+          className="relative w-2/3 h-2/3" // Container for the 'fill' image
+        >
+          <Image
+            src={data.image}
+            alt={data.title}
+            fill
+            priority // Recommended since this is likely a featured image
+            sizes="(max-width: 768px) 288px, 400px"
+            className="object-contain drop-shadow-2xl"
+          />
+        </motion.div>
       </AnimatePresence>
     </div>
 
