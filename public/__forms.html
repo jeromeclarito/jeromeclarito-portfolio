@@ -1,14 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
-<head></head>
+<head>
+  <meta charset="UTF-8">
+</head>
 
 <body>
-  <form name="contact" data-netlify-honeypot="bot-field" hiddendata-netlify="true">
+  <form name="contact" data-netlify="true" netlify-honeypot="bot-field">
     <input type="text" name="name" />
     <input type="email" name="email" />
     <textarea name="message"></textarea>
-    <input type="text" name="bot-field" /> <!-- Honeypot field -->
-    <input type="hidden" name="subject" value="Inquiry: %{formName}" />
+    <input type="hidden" name="form-name" value="contact" />
   </form>
 </body>
 

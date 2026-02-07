@@ -49,11 +49,13 @@ export default function ContactMe() {
       await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        // @ts-ignore
+        body: new URLSearchParams(formData).toString(),
       });
       setIsSubmitted(true);
     } catch (error) {
-      alert("There was an error sending your message. Please try again.");
+      console.error("Submission error:", error);
+      alert("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -83,17 +85,21 @@ export default function ContactMe() {
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
                 <motion.form
-                  key="contact-form"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  name="contact"
-                  method="POST"
-                  data-netlify="true"
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0, y: -20 }}
                   onSubmit={handleSubmit}
+                  name="contact"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field"
                   className="space-y-6"
                 >
+                  {/* Required for Netlify */}
                   <input type="hidden" name="form-name" value="contact" />
+                  <p className="hidden">
+                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                  </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
