@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Jerome Clarito",
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className="antialiased max-w-screen-2xl mx-auto dark:bg-black bg-zinc-50 transition-colors">
         <Header />
         {children}
+        <Analytics />
       </body>
     </html>
   );
