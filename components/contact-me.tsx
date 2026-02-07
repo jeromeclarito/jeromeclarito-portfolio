@@ -43,19 +43,26 @@ export default function ContactMe() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Create the body string manually to ensure "form-name" is first
+    const body = new URLSearchParams(formData as any).toString();
 
     try {
-      await fetch("/", {
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        // @ts-ignore
-        body: new URLSearchParams(formData).toString(),
+        body: body,
       });
-      setIsSubmitted(true);
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        console.error("Netlify response not OK:", response.status);
+      }
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
