@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Let's Build Together | Contact Jerome Clarito",
     description: "Currently available for remote opportunities and Australian-based consulting projects.",
     url: "https://jeromeeeee.com/contact",
-    images: [{ url: "/og-contact.png", width: 1200, height: 630, alt: "Contact Jerome Clarito" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Contact Jerome Clarito" }],
   },
 };
 

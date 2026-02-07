@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     title: "Projects | Jerome Clarito Portfolio",
     description: "From finance engines to cultural heritage sites: a showcase of digital excellence.",
     url: "https://jeromeeeee.com/projects",
-    images: [{ url: "/og-projects.png", width: 1200, height: 630, alt: "Jerome Clarito Projects Showcase" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Jerome Clarito Projects Showcase" }],
   },
 };
 

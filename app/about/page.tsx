@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "About Jerome Clarito | Web Consultant",
     description: "Building responsive, accessible components that work for everyone. Explore my journey and tech stack.",
     url: "https://jeromeeeee.com/about",
-    images: [{ url: "/og-about.png", width: 1200, height: 630, alt: "About Jerome Clarito" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "About Jerome Clarito" }],
   },
 };
 
