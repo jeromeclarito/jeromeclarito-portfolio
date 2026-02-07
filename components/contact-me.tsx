@@ -46,25 +46,21 @@ export default function ContactMe() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Build the body manually to ensure correct format for Netlify
-    const body = new URLSearchParams();
-    body.append("form-name", "contact");
-    body.append("name", formData.get("name") as string);
-    body.append("email", formData.get("email") as string);
-    body.append("message", formData.get("message") as string);
+    // This automatically includes form-name and bot-field correctly
+    const body = new URLSearchParams(formData as any).toString();
 
     try {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        body: body,
       });
 
       if (response.ok) {
         setIsSubmitted(true);
         form.reset();
       } else {
-        console.error("Netlify response not OK:", response.status);
+        console.error("Netlify error:", response.status);
       }
     } catch (error) {
       console.error("Submission error:", error);
