@@ -20,5 +20,9 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactMe />;
+  return (
+    <main className="min-h-screen bg-zinc-50 dark:bg-black text-zinc-900 dark:text-zinc-100 py-24 px-6 md:px-12 lg:px-24 transition-colors flex justify-start">
+      <ContactMe />
+    </main>
+  )
 }

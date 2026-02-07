@@ -3,9 +3,10 @@ import { BlurText } from "./blur-text"
 
 export const HeroSection = () => {
   return (
-    <main className="relative min-h-screen flex flex-col">
+    <main className="relative min-h-screen grid items-center  overflow-hidden">
       {/* Centered Main Name - Always Perfectly Centered */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-4">
+      {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full px-4"> */}
+      <div className="self-end">
         <div className="relative text-center">
           <div>
             <BlurText
@@ -13,7 +14,7 @@ export const HeroSection = () => {
               delay={100}
               animateBy="letters"
               direction="top"
-              className="font-bold text-[80px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap text-brand"
+              className="font-bold text-[80px] sm:text-[140px] md:text-[180px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap text-brand"
             // style={{ color: "#d1a505", fontFamily: "'Fira Code', monospace" }}
             />
           </div>
@@ -23,7 +24,7 @@ export const HeroSection = () => {
               delay={120}
               animateBy="letters"
               direction="bottom"
-              className="font-bold text-[80px] sm:text-[140px] md:text-[180px] lg:text-[210px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap text-brand"
+              className="font-bold text-[80px] sm:text-[140px] md:text-[180px] leading-[0.75] tracking-tighter uppercase justify-center whitespace-nowrap text-brand"
 
             />
           </div>
@@ -42,7 +43,8 @@ export const HeroSection = () => {
       </div>
 
       {/* Tagline - Proper Distance Below Hero */}
-      <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-32 xl:bottom-36 left-1/2 -translate-x-1/2 w-full px-6">
+      {/* <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-32 xl:bottom-36 left-1/2 -translate-x-1/2 w-full px-6"> */}
+      <div className="self-end mb-12 lg:mb-24 xl:mb-32 px-6">
         <div className="flex justify-center">
           <BlurText
             text="Coding for clarity, accessibility, and performance."

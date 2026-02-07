@@ -37,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <main className="min-h-screen w-full bg-zinc-50 dark:bg-black transition-colors">
+    <main className="min-h-screen w-full bg-zinc-50 dark:bg-black py-24 px-6 md:px-12 lg:px-24 transition-colors">
       <EducationTimeline />
     </main>
   );

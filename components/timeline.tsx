@@ -78,7 +78,7 @@ export default function EducationPage() {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={containerVariants}
-      className='lg:pt-36 py-24 px-6 md:px-12 lg:px-24 overflow-x-hidden'
+      className='overflow-x-hidden'
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 md:mb-24 items-end">

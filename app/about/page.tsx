@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen w-full flex flex-col items-center justify-center bg-zinc-50 dark:bg-black transition-colors">
+    <main className="min-h-screen w-full flex flex-col items-center justify-start bg-zinc-50 dark:bg-black transition-colors">
       <AboutMe />
     </main>
   );
