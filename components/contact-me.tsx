@@ -38,7 +38,7 @@ export default function ContactMe() {
     { label: "GitHub", value: "github.com/jeromeclarito", href: "https://github.com/jeromeclarito" },
   ];
 
-  // Netlify AJAX submission handler
+  // Formspree Submission Handler
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -46,29 +46,25 @@ export default function ContactMe() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // Hard-coding the form-name ensures it is correctly sent as "contact"
-    const body = new URLSearchParams();
-    formData.forEach((value, key) => {
-      body.append(key, value.toString());
-    });
-
     try {
-      const response = await fetch("/", {
+      const response = await fetch("https://formspree.io/f/xpqjzlop", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
 
       if (response.ok) {
         setIsSubmitted(true);
         form.reset();
       } else {
-        console.error("Netlify error status:", response.status);
-        throw new Error("Failed to submit to Netlify");
+        const data = await response.json();
+        throw new Error(data.error || "Submission failed");
       }
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Submission failed. Please check your connection or try again.");
+      alert("Oops! There was a problem submitting your form. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -92,7 +88,6 @@ export default function ContactMe() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-        {/* Left Column */}
         <div className="md:col-span-7">
           <motion.div variants={itemVariants} className="min-h-[400px]">
             <AnimatePresence mode="wait">
@@ -102,31 +97,18 @@ export default function ContactMe() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -20 }}
-                  method="POST"
-                  action="/"
                   onSubmit={handleSubmit}
-                  name="jeromecontact"
-                  data-netlify="true"
-                  data-netlify-honeypot="bot-field"
                   className="space-y-6"
                 >
-                  {/* CRITICAL: hidden input for Netlify form-name */}
-                  <input type="hidden" name="form-name" value="jeromecontact" />
-
-                  {/* Honeypot field - autoComplete off prevents browser-triggered spam */}
-                  <p className="hidden">
-                    <label>
-                      Don’t fill this out if you’re human:
-                      <input name="bot-field" tabIndex={-1} autoComplete="off" />
-                    </label>
-                  </p>
+                  {/* Formspree Honeypot (Anti-Spam) */}
+                  <input type="text" name="_gotcha" style={{ display: 'none' }} />
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest text-zinc-400 ml-1">Name</label>
                       <Input
-                        name="name"
-                        required
+                        name="name" 
+                        required 
                         placeholder="John Doe"
                         autoComplete="name"
                         className="bg-transparent border-zinc-200 dark:border-zinc-800 focus:border-blue-600 rounded-xl h-12"
@@ -135,9 +117,9 @@ export default function ContactMe() {
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest text-zinc-400 ml-1">Email</label>
                       <Input
-                        type="email"
-                        name="email"
-                        required
+                        type="email" 
+                        name="email" 
+                        required 
                         placeholder="john@example.com"
                         autoComplete="email"
                         className="bg-transparent border-zinc-200 dark:border-zinc-800 focus:border-blue-600 rounded-xl h-12"
@@ -148,8 +130,8 @@ export default function ContactMe() {
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-zinc-400 ml-1">Message</label>
                     <Textarea
-                      name="message"
-                      required
+                      name="message" 
+                      required 
                       placeholder="How can I help you?"
                       className="bg-transparent border-zinc-200 dark:border-zinc-800 focus:border-blue-600 rounded-2xl min-h-[150px] resize-none"
                     />
@@ -189,7 +171,6 @@ export default function ContactMe() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Social Links */}
           <div className="space-y-8 pt-8 border-t border-zinc-100 dark:border-zinc-900">
             {contactLinks.map((link) => (
               <motion.div key={link.label} variants={itemVariants}>
@@ -211,7 +192,6 @@ export default function ContactMe() {
           </div>
         </div>
 
-        {/* Right Column: Location Card */}
         <motion.div
           variants={itemVariants}
           className="md:col-span-5 flex flex-col justify-start md:pl-12"
