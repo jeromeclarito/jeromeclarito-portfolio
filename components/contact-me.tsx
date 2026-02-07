@@ -46,24 +46,29 @@ export default function ContactMe() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // This automatically includes form-name and bot-field correctly
-    const body = new URLSearchParams(formData as any).toString();
+    // Hard-coding the form-name ensures it is correctly sent as "contact"
+    const body = new URLSearchParams();
+    formData.forEach((value, key) => {
+      body.append(key, value.toString());
+    });
 
     try {
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body,
+        body: body.toString(),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
         form.reset();
       } else {
-        console.error("Netlify error:", response.status);
+        console.error("Netlify error status:", response.status);
+        throw new Error("Failed to submit to Netlify");
       }
     } catch (error) {
       console.error("Submission error:", error);
+      alert("Submission failed. Please check your connection or try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -98,29 +103,41 @@ export default function ContactMe() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0, y: -20 }}
                   onSubmit={handleSubmit}
-                  name="contact"
+                  name="jeromecontact"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field"
                   className="space-y-6"
                 >
-                  {/* Required for Netlify */}
-                  <input type="hidden" name="form-name" value="contact" />
+                  {/* CRITICAL: hidden input for Netlify form-name */}
+                  <input type="hidden" name="form-name" value="jeromecontact" />
+
+                  {/* Honeypot field - autoComplete off prevents browser-triggered spam */}
                   <p className="hidden">
-                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                    <label>
+                      Don’t fill this out if you’re human:
+                      <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                    </label>
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest text-zinc-400 ml-1">Name</label>
                       <Input
-                        name="name" required placeholder="John Doe"
+                        name="name"
+                        required
+                        placeholder="John Doe"
+                        autoComplete="name"
                         className="bg-transparent border-zinc-200 dark:border-zinc-800 focus:border-blue-600 rounded-xl h-12"
                       />
                     </div>
                     <div className="space-y-2">
                       <label className="text-[10px] uppercase tracking-widest text-zinc-400 ml-1">Email</label>
                       <Input
-                        type="email" name="email" required placeholder="john@example.com"
+                        type="email"
+                        name="email"
+                        required
+                        placeholder="john@example.com"
+                        autoComplete="email"
                         className="bg-transparent border-zinc-200 dark:border-zinc-800 focus:border-blue-600 rounded-xl h-12"
                       />
                     </div>
@@ -129,12 +146,15 @@ export default function ContactMe() {
                   <div className="space-y-2">
                     <label className="text-[10px] uppercase tracking-widest text-zinc-400 ml-1">Message</label>
                     <Textarea
-                      name="message" required placeholder="How can I help you?"
+                      name="message"
+                      required
+                      placeholder="How can I help you?"
                       className="bg-transparent border-zinc-200 dark:border-zinc-800 focus:border-blue-600 rounded-2xl min-h-[150px] resize-none"
                     />
                   </div>
 
                   <Button
+                    type="submit"
                     disabled={isSubmitting}
                     className="w-full md:w-auto px-8 h-12 rounded-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-black hover:scale-[1.02] transition-transform flex gap-2"
                   >
@@ -167,7 +187,7 @@ export default function ContactMe() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Social Links remain below */}
+          {/* Social Links */}
           <div className="space-y-8 pt-8 border-t border-zinc-100 dark:border-zinc-900">
             {contactLinks.map((link) => (
               <motion.div key={link.label} variants={itemVariants}>
@@ -195,7 +215,6 @@ export default function ContactMe() {
           className="md:col-span-5 flex flex-col justify-start md:pl-12"
         >
           <div className="p-8 rounded-3xl border border-zinc-100 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/30 backdrop-blur-sm sticky top-24">
-            {/* ... (Same location content as before) ... */}
             <div className="space-y-8">
               <div>
                 <div className="flex items-center gap-2 mb-4">
